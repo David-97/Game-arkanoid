@@ -15,7 +15,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
   private boolean play = false;
   private int score = 0;
-  private int totalBricks = 30;
+  private int totalBricks;
   private int delay = 5;
   private Timer timer;
   private int playerX = 600;
@@ -28,6 +28,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
   public Gameplay() {
     int[] size = getRandomSize();
+    totalBricks = size[0] * size[1];
     enviromentGenerator = new EnviromentGenerator(size[0], size[1]);
     addKeyListener(this);
     setFocusable(true);
@@ -138,7 +139,7 @@ public class Gameplay extends JPanel implements KeyListener, ActionListener {
 
   public int[] getRandomSize() {
     Random random = new Random();
-    return new int[]{random.nextInt(10), random.nextInt(10)};
+    return new int[]{random.nextInt(8) + 1, random.nextInt(8) + 1};
   }
 
   @Override
